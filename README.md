@@ -83,3 +83,81 @@ The project is built using **HTML, CSS, and Vanilla JavaScript** with EmailJS in
 ---
 
 ## 📂 Folder Structure
+Laundry-Services-Web-App/
+│
+├── index.html
+├── style.css
+├── script.js
+└── images/
+└── laundry.jfif
+
+---
+
+## ⚙️ How to Run Locally
+
+1. Clone the repository
+2. Open in VS Code
+3. Run using Live Server
+4. Configure EmailJS:
+   - Add Gmail service
+   - Create email template
+   - Replace:
+     - Service ID
+     - Template ID
+     - Public Key in script.js
+
+---
+
+## 📧 EmailJS Setup
+
+- Create account at https://emailjs.com
+- Add Gmail service
+- Create email template with variables:
+  - `{{user_name}}`
+  - `{{user_email}}`
+  - `{{user_phone}}`
+  - `{{services}}`
+  - `{{total}}`
+- Add your public key in script.js
+
+---
+
+## 🧠 Challenges Faced
+
+- Debugging 400 & 422 EmailJS errors
+- Template variable mismatch
+- Service activation configuration
+- Responsive layout adjustments
+
+---
+
+## 💡 What I Learned
+
+- DOM manipulation
+- Event handling
+- API integration
+- EmailJS configuration & debugging
+- Responsive UI design
+- Real-world problem solving
+
+---
+
+## 📈 Future Improvements
+
+- Add payment gateway
+- Generate downloadable PDF invoice
+- Add authentication system
+- Store bookings in database
+- Admin dashboard
+
+---
+
+## 👨‍💻 Author
+
+Anirudh
+
+---
+
+## ⭐ If You Like This Project
+
+Give it a star ⭐ on GitHub!
