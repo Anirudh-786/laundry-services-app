@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaundryPro | Expert Laundry Services</title>
+    <!-- Font Awesome for icons (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 1) NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Logo</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="username-btn"><i class="far fa-user"></i> Username</button>
+                <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2) HERO SECTION (Two Columns) -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Revitalize Your Clothes with Expert Laundry Services!</h1>
+                <p>We care for your garments like our own. Premium dry cleaning, wash & fold, and eco-friendly processes. Schedule a pickup today!</p>
+                <button class="btn-primary book-smooth" data-target="#booking-section">Book a Service Today</button>
+            </div>
+            <div class="hero-image">
+                <img src="images/laundry.jfif" alt="Laundry Service">
+            </div>
+        </div>
+    </section>
+
+    <!-- 3) SERVICE OVERVIEW STRIP (Full Width Blue) -->
+    <div class="stats-strip">
+        <div class="stat-item">15+ Laundry Services</div>
+        <div class="stat-item">240+ Happy Customers</div>
+        <div class="stat-item">2+ Years Experience</div>
+    </div>
+
+    <!-- 4) BOOKING SERVICES SECTION (Two Columns) -->
+    <section id="booking-section" class="booking-section">
+        <div class="booking-container">
+            <!-- LEFT DIV – Services List -->
+            <div class="services-list">
+                <h2>Our Services</h2>
+                <div class="service-cards" id="serviceCards">
+                    <!-- dynamically created via JS but we build static and then use JS to attach listeners -->
+                    <!-- We'll generate from JS so we can have single source. But for structure we keep container empty and JS fills it -->
+                </div>
+                <p class="add-items-note">⬆️ Add items to the cart and book now ⬇️</p>
+            </div>
+
+            <!-- RIGHT DIV – Cart & Booking -->
+            <div class="cart-booking">
+                <div class="cart-section">
+                    <h3>Added Items</h3>
+                    <table class="cart-table" id="cartTable">
+                        <thead>
+                            <tr><th>S.No</th><th>Service Name</th><th>Price (₹)</th></tr>
+                        </thead>
+                        <tbody id="cartBody">
+                            <!-- dynamic rows -->
+                        </tbody>
+                    </table>
+                    <div class="cart-total" id="cartTotal">Total: ₹0</div>
+                </div>
+
+                <div class="booking-form">
+                    <h3>Book Now</h3>
+                    <input type="text" id="fullName" placeholder="Full Name">
+                    <input type="email" id="email" placeholder="Email">
+                    <input type="tel" id="phone" placeholder="Phone Number">
+                    <button class="btn-primary" id="bookNowBtn">Book Now</button>
+                    <div id="successMessage" class="success-msg"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5) QUALITY DESCRIPTION SECTION (Four boxes) -->
+    <section class="quality-section">
+        <div class="quality-container">
+            <div class="quality-card"><i class="fas fa-star"></i><h4>Premium Services</h4><p>Luxury care for all fabrics</p></div>
+            <div class="quality-card"><i class="fas fa-headset"></i><h4>Quick Support</h4><p>24/7 chat & helpline</p></div>
+            <div class="quality-card"><i class="fas fa-truck"></i><h4>Hassle Free Delivery</h4><p>Free pickup & drop</p></div>
+            <div class="quality-card"><i class="fas fa-tag"></i><h4>Affordable Prices</h4><p>Best value for money</p></div>
+        </div>
+    </section>
+
+    <!-- 6) NEWSLETTER SECTION (Full width blue) -->
+    <div class="newsletter">
+        <div class="newsletter-container">
+            <div class="newsletter-left">Subscribe to our newsletter.</div>
+            <div class="newsletter-right">
+                <input type="text" placeholder="Full Name" id="newsName">
+                <input type="email" placeholder="Email" id="newsEmail">
+                <button class="btn-secondary" id="subscribeBtn">Subscribe</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7) FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col"><h4>Logo</h4><p>Premium laundry since 2020. We bring freshness to your doorstep.</p></div>
+            <div class="footer-col"><h4>About Us</h4><p><a href="#">Our story</a></p></div>
+            <div class="footer-col"><h4>Important Links</h4><ul><li><a href="#">FAQs</a></li><li><a href="#">Terms</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+            <div class="footer-col"><h4>Contact</h4><p><i class="fas fa-phone"></i> +91 98765 43210</p><p><i class="fas fa-envelope"></i> hello@laundrypro.com</p><div class="social-icons"><i class="fab fa-facebook"></i><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i></div></div>
+        </div>
+    </footer>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
