@@ -15,73 +15,114 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ---------- RENDER SERVICES ----------
     function renderServiceCards() {
+
         const container = document.getElementById('serviceCards');
         container.innerHTML = '';
 
         services.forEach(service => {
+
             const card = document.createElement('div');
             card.className = 'service-card';
+
             card.innerHTML = `
                 <h4>${service.name}</h4>
                 <p>₹${service.price}</p>
-                <div>
-                    <button class="add-btn" data-id="${service.id}">+ Add</button>
-                    <button class="remove-btn" data-id="${service.id}">− Remove</button>
-                </div>
+                <button class="toggle-btn" data-id="${service.id}">
+                    Add
+                </button>
             `;
+
             container.appendChild(card);
+
         });
 
-        document.querySelectorAll('.add-btn').forEach(btn => {
-            btn.addEventListener('click', e => {
-                addToCart(parseInt(e.target.dataset.id));
+        // ---------- BUTTON CLICK ----------
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+
+            btn.addEventListener('click', function () {
+
+                const id = parseInt(this.dataset.id);
+                const service = services.find(s => s.id === id);
+
+                const index = cart.findIndex(item => item.id === id);
+
+                // ADD SERVICE
+                if (index === -1) {
+
+                    cart.push({ ...service });
+
+                    this.innerText = "Remove";
+                    this.style.backgroundColor = "#ef4444";
+
+                }
+
+                // REMOVE SERVICE
+                else {
+
+                    cart.splice(index, 1);
+
+                    this.innerText = "Add";
+                    this.style.backgroundColor = "#2563eb";
+
+                }
+
+                updateCart();
+
             });
+
         });
 
-        document.querySelectorAll('.remove-btn').forEach(btn => {
-            btn.addEventListener('click', e => {
-                removeFromCart(parseInt(e.target.dataset.id));
-            });
-        });
     }
 
-    // ---------- CART FUNCTIONS ----------
-    function addToCart(id) {
-        const service = services.find(s => s.id === id);
-        if (service) {
-            cart.push({ ...service });
-            updateCart();
-        }
-    }
-
-    function removeFromCart(id) {
-        const index = cart.findIndex(item => item.id === id);
-        if (index !== -1) {
-            cart.splice(index, 1);
-            updateCart();
-        }
-    }
-
+    // ---------- UPDATE CART ----------
     function updateCart() {
+
         const tbody = document.getElementById('cartBody');
         const totalSpan = document.getElementById('cartTotal');
+
         tbody.innerHTML = '';
 
         let total = 0;
 
         cart.forEach((item, index) => {
+
             const row = document.createElement('tr');
+
             row.innerHTML = `
                 <td>${index + 1}</td>
                 <td>${item.name}</td>
                 <td>₹${item.price}</td>
             `;
+
             tbody.appendChild(row);
+
             total += item.price;
+
         });
 
         totalSpan.innerText = `Total: ₹${total}`;
+
     }
+
+    // ---------- HERO BUTTON SCROLL ----------
+    document.querySelectorAll(".book-smooth").forEach(button => {
+
+        button.addEventListener("click", function(e){
+
+            e.preventDefault();
+
+            const target = this.getAttribute("data-target");
+            const section = document.querySelector(target);
+
+            if(section){
+                section.scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
+
+        });
+
+    });
 
     // ---------- BOOK NOW ----------
     document.getElementById('bookNowBtn').addEventListener('click', function () {
@@ -114,7 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const serviceList = cart.map(item => `${item.name} (₹${item.price})`).join(', ');
         const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
 
-        // 🔥 FINAL EMAILJS SEND
         emailjs.send(
             "service_d24e97j",
             "template_q60szot",
@@ -127,20 +167,30 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             "piLPSneJSmEHD4JPR"
         )
-        .then(function (response) {
-            console.log("SUCCESS", response);
+        .then(function () {
+
             successDiv.innerText =
                 "Thank you For Booking the Service! We will get back to you soon!";
 
             cart = [];
             updateCart();
+
             document.getElementById('fullName').value = "";
             document.getElementById('email').value = "";
             document.getElementById('phone').value = "";
+
+            // Reset buttons
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.innerText = "Add";
+                btn.style.backgroundColor = "#2563eb";
+            });
+
         })
         .catch(function (error) {
+
             console.log("FULL ERROR:", error);
-            alert("Email failed. Check EmailJS service activation.");
+            alert("Email failed.");
+
         });
 
     });
