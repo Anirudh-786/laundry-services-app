@@ -287,3 +287,12 @@ body {
     .stats-strip { flex-direction: column; }
     .footer-container { grid-template-columns: 1fr; }
 }
+
+.toggle-btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:8px 16px;
+border-radius:6px;
+cursor:pointer;
+}
