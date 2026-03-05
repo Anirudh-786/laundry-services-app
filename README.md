@@ -5,7 +5,7 @@ A fully responsive Laundry Services Web Application that allows users to explore
 ---
 
 ## 🚀 Live Demo
-( Add your Netlify link here )
+https://freshwashapp.netlify.app/
 
 ---
 
